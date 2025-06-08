@@ -4,7 +4,7 @@ import streamlit as st
 # Function to create a database connection
 def create_connection():
      return mysql.connector.connect(
-        host=st.secrets["shinkansen.proxy.rlwy.net"],
+        host=st.secrets["db_host"],
         user=st.secrets["root"],
         password=st.secrets["YdezWoMvvsmuZqJAgUuxwZULUzuhbGJS"],
         database=st.secrets["fraud-detection-db"],
