@@ -4,7 +4,7 @@ import numpy as np
 
 def run():
     st.markdown("<h1 style='text-align: center;'>🔍 Credit Card Fraud Detection</h1>", unsafe_allow_html=True)
-    st.image("transaction-fraud.jpg", use_container_width=True)
+    
 
     st.markdown("### Enter Transaction Details:")
     input_df = st.text_input("🔢 Enter all transaction details (comma-separated): ")
