@@ -5,7 +5,7 @@ import streamlit as st
 def create_connection():
      return mysql.connector.connect(
         host=st.secrets["db_host"],
-        user=st.secrets["root"],
+        user=st.secrets["db_user"],
         password=st.secrets["YdezWoMvvsmuZqJAgUuxwZULUzuhbGJS"],
         database=st.secrets["fraud-detection-db"],
         port=st.secrets["26694"]
