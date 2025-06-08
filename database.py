@@ -6,9 +6,9 @@ def create_connection():
      return mysql.connector.connect(
         host=st.secrets["db_host"],
         user=st.secrets["db_user"],
-        password=st.secrets["YdezWoMvvsmuZqJAgUuxwZULUzuhbGJS"],
-        database=st.secrets["fraud-detection-db"],
-        port=st.secrets["26694"]
+        password=st.secrets["db_password"],
+        database=st.secrets["db_name"],
+        port=st.secrets["db_port"]
     )
 
 # Function to create the users table if it doesn't exist
