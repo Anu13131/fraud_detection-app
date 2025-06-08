@@ -2,7 +2,7 @@ import streamlit as st
 
 def run():
     st.markdown("<h1 style='text-align: center;'>🏦 WELCOME TO CREDIT CARD FRAUD DETECTION SOFTWARE</h1>", unsafe_allow_html=True)
-    st.image("credit_card.jpg", use_container_width=True)
+    
 
     st.markdown("""
         <div style='text-align: center; font-size: 18px;'>
