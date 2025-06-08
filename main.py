@@ -7,7 +7,7 @@ st.set_page_config(page_title="Credit Card Fraud Detection", layout="wide")
 
 # Sidebar navigation
 with st.sidebar:
-    st.image("assests/Fraud_prevention.png", use_container_width=True)
+    st.image("assets/Fraud_prevention.png", use_container_width=True)
     
     selected = option_menu(
         menu_title="🏦 Banking Services",
