@@ -1,31 +1,29 @@
-import mysql.connector
 import streamlit as st
+import mysql.connector
 
-# Function to create a database connection
 def create_connection():
     return mysql.connector.connect(
         host=st.secrets["mysql"]["host"],
+        port=st.secrets["mysql"]["port"],
         user=st.secrets["mysql"]["user"],
         password=st.secrets["mysql"]["password"],
-        database=st.secrets["mysql"]["database"],
-        port=st.secrets["mysql"]["port"]
+        database=st.secrets["mysql"]["database"]
     )
 
-
-# Function to create the users table if it doesn't exist
 def create_users_table():
     conn = create_connection()
     cursor = conn.cursor()
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            full_name VARCHAR(255) NOT NULL,
-            email VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
-        )
+    CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        full_name VARCHAR(255),
+        email VARCHAR(255) UNIQUE,
+        password VARCHAR(255)
+    )
     """)
     conn.commit()
+    cursor.close()
     conn.close()
 
-# Call this function when the app starts
-create_users_table()
+# Remove calling create_users_table() here
+# create_users_table()
