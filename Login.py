@@ -8,7 +8,7 @@ def create_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="AnushkaDe@123",  # Replace with your MySQL password
+        password="AnushkaDe@123",  # 🔒 Replace with st.secrets in production
         database="user_authentication"
     )
 
@@ -26,13 +26,14 @@ def generate_captcha(length=6):
     characters = string.ascii_uppercase + string.digits
     return ''.join(random.choices(characters, k=length))
 
-# Initialize CAPTCHA in session state if not already set
-if "captcha" not in st.session_state:
-    st.session_state["captcha"] = generate_captcha()
-
 # Login Page Function
 def login_page():
     """Secure Login Page with CAPTCHA & Database Authentication"""
+
+    # ✅ Initialize CAPTCHA only when the function is called
+    if "captcha" not in st.session_state:
+        st.session_state["captcha"] = generate_captcha()
+
     st.title("🔐 Secure Login Page")
 
     email = st.text_input("📧 Email", placeholder="Enter your registered email")
