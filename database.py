@@ -3,13 +3,14 @@ import streamlit as st
 
 # Function to create a database connection
 def create_connection():
-     return mysql.connector.connect(
-        host=st.secrets["db_host"],
-        user=st.secrets["db_user"],
-        password=st.secrets["db_password"],
-        database=st.secrets["db_name"],
-        port=st.secrets["db_port"]
+    return mysql.connector.connect(
+        host=st.secrets["mysql"]["host"],
+        user=st.secrets["mysql"]["user"],
+        password=st.secrets["mysql"]["password"],
+        database=st.secrets["mysql"]["database"],
+        port=st.secrets["mysql"]["port"]
     )
+
 
 # Function to create the users table if it doesn't exist
 def create_users_table():
