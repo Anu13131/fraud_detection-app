@@ -27,14 +27,14 @@ def generate_captcha(length=6):
     characters = string.ascii_uppercase + string.digits
     return ''.join(random.choices(characters, k=length))
 
-# Initialize CAPTCHA in session state if not already set
-if "captcha" not in st.session_state:
-    st.session_state["captcha"] = generate_captcha()
-
 # Login Page Function
 def login_page():
     """Secure Login Page with CAPTCHA & Database Authentication"""
     st.title("🔐 Secure Login Page")
+
+    # Ensure CAPTCHA is initialized inside the function
+    if "captcha" not in st.session_state:
+        st.session_state["captcha"] = generate_captcha()
 
     email = st.text_input("📧 Email", placeholder="Enter your registered email")
     password = st.text_input("🔑 Password", type="password", placeholder="Enter your password")
@@ -45,7 +45,7 @@ def login_page():
 
     if st.button("Login"):
         user = check_login(email, password)
-        
+
         if user:
             if user_captcha == st.session_state["captcha"]:
                 st.success(f"✅ Welcome, {user['full_name']}!")
